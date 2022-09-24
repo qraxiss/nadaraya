@@ -1,0 +1,31 @@
+{
+    "positions": {
+        "btcusdt@kline_15m": {
+            "side": "SELL",
+            "price": 23.32,
+            "quantity": 15,
+            "id": 432145123421,
+            "positionSide": "SHORT",
+            "levels":{
+                "stop":{
+                    "id":23341234,
+                    "price":25.43
+                },
+                "take":{}
+            }
+        }
+    },
+    "balance": {
+        "total": 35,
+        "available": 64
+    },
+    "step_info": {
+        "symbol": {
+            "min_qty": 0.001,
+            "tick_size": 0.01
+        }
+    },
+    "klines": {
+        "pair": "binance-klines-format"
+    }
+}

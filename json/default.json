@@ -1,0 +1,89 @@
+{
+    "account": {
+        "api_key": "yp367QVfp9t7yGZ1h541nvEgQ6khUStC5FRJ0BJP3GlbtNqZGw",
+        "api_secret": "PxRT6GaFtDagOexkGZk00sae0583DfRifrAsAQpYHRnLLGsPTd"
+    },
+    "telegram": {
+        "5346169389:AAFGMYTo19x9fmwsIz1P7BDL8t-Ft5E535w": [
+            "1479523398", "510428351"
+        ]
+    },
+    "mode_params": {
+        "HEDGE": {
+            "BUY": {
+                "side": "BUY",
+                "type": "MARKET",
+                "positionSide": "LONG"
+            },
+            "SELL": {
+                "side": "SELL",
+                "type": "MARKET",
+                "positionSide": "SHORT"
+            },
+            "BUY_STOP_LOSS": {
+                "type": "STOP_MARKET",
+                "side": "SELL",
+                "positionSide": "LONG"
+            },
+            "SELL_STOP_LOSS": {
+                "side": "BUY",
+                "type": "STOP_MARKET",
+                "positionSide": "SHORT"
+            },
+            "BUY_TAKE_PROFIT": {
+                "side": "SELL",
+                "type": "TAKE_PROFIT_MARKET",
+                "positionSide": "LONG"
+            },
+            "SELL_TAKE_PROFIT": {
+                "side": "BUY",
+                "type": "TAKE_PROFIT_MARKET",
+                "positionSide": "SHORT"
+            },
+            "BUY_CLOSE": {
+                "type": "MARKET",
+                "side": "BUY",
+                "positionSide": "SHORT"
+            },
+            "SELL_CLOSE": {
+                "type": "MARKET",
+                "side": "SELL",
+                "positionSide": "LONG"
+            }
+        },
+        "BOTH": {
+            "BUY": {
+                "side": "BUY",
+                "type": "MARKET"
+            },
+            "BUY_CLOSE": {
+                "side": "SELL",
+                "type": "MARKET"
+            },
+            "SELL": {
+                "side": "SELL",
+                "type": "MARKET"
+            },
+            "SELL_CLOSE": {
+                "side": "BUY",
+                "type": "MARKET"
+            },
+            "BUY_STOP_LOSS": {
+                "side": "SELL",
+                "type": "STOP_MARKET"
+            },
+            "SELL_STOP_LOSS": {
+                "side": "BUY",
+                "type": "STOP_MARKET"
+            },
+            "BUY_TAKE_PROFIT": {
+                "side": "SELL",
+                "type": "TAKE_PROFIT_MARKET"
+            },
+            "SELL_TAKE_PROFIT": {
+                "side": "BUY",
+                "type": "TAKE_PROFIT_MARKET"
+            }
+        }
+    }
+}

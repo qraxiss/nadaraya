@@ -1,0 +1,84 @@
+.logo {
+    width: 3em;
+}
+
+div{
+    margin-bottom: 5px;
+}
+
+.form-control {
+    width: 10em;
+}
+
+.btn.btn-succes{
+    margin-left: 10px;
+}
+
+.table{
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+#positions_output{
+    height: 150px;
+}
+
+#balance_output{
+    width: 10%;
+}
+
+.button{
+    margin-left: 5px;
+}
+
+.graph{
+    width: 70%;
+}
+
+
+.dropdowns{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#symbol_dropdown{
+    width: 15%;
+}
+
+#interval_dropdown{
+    width: 15%;
+}
+
+#socket_symbol_dropdown{
+    width: 15%;
+}
+
+#socket_interval_dropdown{
+    width: 15%;
+}
+
+.append-delete{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.input-group{
+    justify-content: center;
+}
+
+.inputs{
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+#a_d_out{
+    justify-content: center;
+}

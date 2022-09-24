@@ -1,0 +1,13 @@
+bs4
+dash
+numpy
+Flask
+plotly
+pandas
+requests
+gunicorn
+pandas-ta
+flask-restful 
+python-dotenv
+python-binance
+python-telegram-bot

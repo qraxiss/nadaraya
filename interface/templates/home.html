@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{%block head%}
+{%endblock%}
+
+{%block content%}
+
+
+<!-- Config -->
+<div class="config header-center" style="width: 30%;">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Actual</th>
+                <th scope="col">Input</th>
+            </tr>
+        </thead>
+        <form action="" method="post">
+            <tbody>
+                <tr>
+                    <td>{{max_position}}</td>
+                    <td><input type="text" class="form-control" placeholder="Max Position" name="max_position"></td>
+                </tr>
+                <tr>
+                    <td>{{position_percentage}}</td>
+                    <td><input type="text" class="form-control" placeholder="Percentage" name="position_percentage">
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{leverage}}</td>
+                    <td><input type="text" class="form-control" placeholder="Leverage" name="leverage"></td>
+                </tr>
+                <tr>
+                    <td>{{stop_loss}}</td>
+                    <td><input type="text" class="form-control" placeholder="Stop Loss" name="stop_loss"></td>
+                </tr>
+                <tr>
+                    <td>{{take_profit}}</td>
+                    <td><input type="text" class="form-control" placeholder="Take Profit" name="take_profit"></td>
+                </tr>
+            </tbody>
+            <div><button type="submit" class="btn btn-primary col text-center">Send Config</button></div>
+
+        </form>
+    </table>
+
+</div>
+
+<!-- Positions Orders Liqudations -->
+<div id="react-entry-point">
+    <div class="_dash-loading">
+        Loading...
+    </div>
+</div>
+
+<!-- Deneme -->
+
+<div id="output"></div>
+
+{{ footer|safe }}
+
+{%endblock%}
