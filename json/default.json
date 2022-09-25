@@ -1,11 +1,16 @@
+
 {
     "account": {
-        "api_key": "yp367QVfp9t7yGZ1h541nvEgQ6khUStC5FRJ0BJP3GlbtNqZGw",
-        "api_secret": "PxRT6GaFtDagOexkGZk00sae0583DfRifrAsAQpYHRnLLGsPTd"
+        "api_key": "Vii9gAcVuJcgqmspFHxG3IvCZRdXFQQ1QX6XJW74DhXqVM6CU3aHNWYYmV0NhnKu",
+        "api_secret": "i5QGvccvI6OxkBr6p7nZDsfQPvQynbcVBJq8W6uV8GyLs6YtEOy7GLXdcwhWM58q"
+    },"account_v2":{
+        "api_key": "yp367QVfp9t7yGZ1h541nvEgQ6khUStC5FRJ0BJP3GlbtNqZGwT5WWdNibnF2WzM",
+        "api_secret": "PxRT6GaFtDagOexkGZk00sae0583DfRifrAsAQpYHRnLLGsPTdpDU5qeN9dSKHgd",
+        "510428351":"uarak"
     },
     "telegram": {
         "5346169389:AAFGMYTo19x9fmwsIz1P7BDL8t-Ft5E535w": [
-            "1479523398", "510428351"
+            "1479523398"
         ]
     },
     "mode_params": {

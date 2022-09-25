@@ -14,8 +14,6 @@ class ApiResources:
     config = get_config()
     values = get_values()
 
-    run = config['run']
-
     client = Client(**default['account'])
     websocket = WebSocket(client, default['account'])
 

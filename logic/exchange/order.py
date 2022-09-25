@@ -1,5 +1,5 @@
 from binance.helpers import round_step_size
-from exchange import int_to_interval
+from logic.exchange import int_to_interval
 from helpers import err_return
 from threading import Thread
 from api import request
@@ -10,7 +10,7 @@ from json import dumps
 
 class Order:
     def __init__(self, params, resources) -> None:
-        if resources.run:
+        if resources.config['run']:
             self.step_info = resources.step_info
             self.positions = resources.positions
             self.balance = resources.balance
@@ -22,11 +22,14 @@ class Order:
             self.orders = None
             self.order = None
 
+            self.params['price'] = float(self.params['price'])
+
             symbol, interval = self.params['pair'].lower().replace('perp', '').split('@')
             
-            interval =  int_to_interval(interval[1:])
+            interval =  int_to_interval(interval)
 
             self.pair = symbol + '@kline_' + interval
+            self.params['pair'] = self.pair
 
             self.side = self.params['side']
             self.symbol = symbol.upper()
@@ -38,6 +41,7 @@ class Order:
             # so as not to calculate in vain if the trade order is not valid.
             self.order = self.is_order_valid()
             if self.order != False:
+                self.client.futures_change_leverage(symbol=self.symbol, leverage=self.config['leverage'])
                 # prepare params for the order
                 self.levels()
                 self.quantity()
@@ -49,6 +53,8 @@ class Order:
                     self.new_order()
                 elif self.order == 'close':
                     self.close_order()
+        else:
+            self.success = False
 
     def is_order_valid(self):
         if self.params['pair'] not in self.positions:
