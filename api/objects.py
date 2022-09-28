@@ -17,9 +17,9 @@ class Klines(BaseApi):
     def post(self, pair):
         try:
             self.resources.klines[pair] = self.data
-            # self.resources.strategy[pair] = Strategy(
-            #     values=self.resources.values, pair=pair,
-            #     config=self.resources.config, default=self.resources.default)
+            self.resources.strategy[pair] = Strategy(
+                values=self.resources.values, pair=pair,
+                config=self.resources.config, default=self.resources.default)
             self.json['outcome'] = True
         except Exception as err:
             self.json['err'] = err_return(str(type(err)))
@@ -42,8 +42,8 @@ class Klines(BaseApi):
             if self.data['closed']:
                 del self.resources.klines[pair][0]
                 self.resources.klines[pair].append(self.data['kline'])
-                # self.resources.strategy[pair].signal(
-                #     self.resources.klines[pair])
+                self.resources.strategy[pair].signal(
+                    self.resources.klines[pair])
             else:
                 self.resources.klines[pair][-1] = self.data['kline']
 

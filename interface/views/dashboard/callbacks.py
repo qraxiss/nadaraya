@@ -5,6 +5,7 @@ from api import request
 
 from time import sleep
 
+
 def init_callbacks(dash_app):
     @dash_app.callback(
         Output('chart_output', 'children'),
@@ -27,7 +28,6 @@ def init_callbacks(dash_app):
         else:
             return None
 
-
     @dash_app.callback(
         Output('out', 'children'),
         Input('append', 'n_clicks'),
@@ -38,22 +38,23 @@ def init_callbacks(dash_app):
     def add(n_clicks, n_clicks_2, symbol, interval):
         if symbol != None and interval != None:
             if "append" == ctx.triggered_id:
-                r = request('/websocket', 'post', json=dict(pair=symbol.lower() + '@kline_' + interval))
+                r = request('/websocket', 'post',
+                            json=dict(pair=symbol.lower() + '@kline_' + interval))
                 return r['outcome']
 
             elif "delete" == ctx.triggered_id:
-                r = request('/websocket', 'delete', json=dict(pair=symbol.lower() + '@kline_' + interval))
+                r = request('/websocket', 'delete',
+                            json=dict(pair=symbol.lower() + '@kline_' + interval))
                 return r['outcome']
 
         return None
-
 
     @dash_app.callback(
         Output('a_d_out', 'children'),
         Input('append', 'n_clicks'),
         Input('delete', 'n_clicks')
     )
-    def pairs(a,d):
+    def pairs(a, d):
         sleep(4)
         response = request('/websocket', 'get')
         if response['outcome']:
@@ -77,7 +78,7 @@ def init_callbacks(dash_app):
             return 'Closed'
 
         else:
-            r=request('/config', 'get', json=dict(key='run'))
+            r = request('/config', 'get', json=dict(key='run'))
             if r['outcome']:
                 if r['data']:
                     return 'Open'
@@ -151,113 +152,77 @@ def init_inputs(dash_app):
                         json=dict(key='max_position'))['data']
         return f'Max Position: {value}'
 
-    # @dash_app.callback(
-    #     Output('long_vwap_out', 'children'),
-    #     Input('long_vwap', 'value')
-    # )
-    # def long_vwap(value):
-    #     if value != None:
-    #         response = request(
-    #             '/strategy', 'put', json=dict(key='vwap_sensitivity_long', value=value))
-    #     value = request('/strategy', 'get',
-    #                     json=dict(key='vwap_sensitivity_long'))['data']
-    #     return f'Vwap Long Value: {value}'
+    @dash_app.callback(
+        Output('long_vwap_out', 'children'),
+        Input('long_vwap', 'value')
+    )
+    def long_vwap(value):
+        if value != None:
+            response = request(
+                '/strategy', 'put', json=dict(key='vwap_sensitivity_long', value=value))
+        value = request('/strategy', 'get',
+                        json=dict(key='vwap_sensitivity_long'))['data']
+        return f'Vwap Long Value: {value}'
 
-    # @dash_app.callback(
-    #     Output('short_vwap_out', 'children'),
-    #     Input('short_vwap', 'value')
-    # )
-    # def short_vwap(value):
-    #     if value != None:
-    #         response = request(
-    #             '/strategy', 'put', json=dict(key='vwap_sensitivity_short', value=value))
-    #     value = request('/strategy', 'get',
-    #                     json=dict(key='vwap_sensitivity_short'))['data']
-    #     return f'Vwap Short Value: {value}'
+    @dash_app.callback(
+        Output('short_vwap_out', 'children'),
+        Input('short_vwap', 'value')
+    )
+    def short_vwap(value):
+        if value != None:
+            response = request(
+                '/strategy', 'put', json=dict(key='vwap_sensitivity_short', value=value))
+        value = request('/strategy', 'get',
+                        json=dict(key='vwap_sensitivity_short'))['data']
+        return f'Vwap Short Value: {value}'
 
-    # @dash_app.callback(
-    #     Output('vwap_period_out', 'children'),
-    #     Input('vwap_period', 'value')
-    # )
-    # def vwap_period(value):
-    #     if value != None:
-    #         response = request(
-    #             '/strategy', 'put', json=dict(key='vwap_period', value=value))
-    #     value = request('/strategy', 'get',
-    #          response = request(
-    #             '/strategy', 'put', json=dict(key='vwap_period', value=value))
-    #     value = request('/strategy', 'get',
-    #                     json=dict(key='vwap_period'))['data']
-    #     return f'Vwap Period: {value}'
+    @dash_app.callback(
+        Output('vwap_period_out', 'children'),
+        Input('vwap_period', 'value')
+    )
+    def vwap_period(value):
+        if value != None:
+            response=request(
+                '/strategy', 'put', json=dict(key='vwap_period', value=value))
+        value=request('/strategy', 'get',
+                        json=dict(key='vwap_period'))['data']
+        
+        return f'Vwap Period: {value}'
 
-    # @dash_app.callback(
-    #     Output('rsi_period_out', 'children'),
-    #     Input('rsi_period', 'value')
-    # )
-    # def rsi_period(value):
-    #     if value != None:
-    #         response = request(
-    #             '/strategy', 'put', json=dict(key='rsi_period', value=value))
-    #     value = request('/strategy', 'get',
-    #                     json=dict(key='rsi_period'))['data']
-    #     return f'Rsi Period: {value}'
+    @dash_app.callback(
+        Output('rsi_period_out', 'children'),
+        Input('rsi_period', 'value')
+    )
+    def rsi_period(value):
+        if value != None:
+            response=request(
+                '/strategy', 'put', json=dict(key='rsi_period', value=value))
+        value=request('/strategy', 'get',
+                        json=dict(key='rsi_period'))['data']
+        return f'Rsi Period: {value}'
 
-    # @dash_app.callback(
-    #     Output('rsi_upper_out', 'children'),
-    #     Input('rsi_upper', 'value')
-    # )
-    # def rsi_upper(value):
-    #     if value != None:
-    #         response = request(
-    #             '/strategy', 'put', json=dict(key='rsi_long_level', value=value))
-    #     value = request('/strategy', 'get',
-    #                     json=dict(key='rsi_long_level'))['data']
-    #     return f'Rsi Long Level: {value}'
+    @dash_app.callback(
+        Output('rsi_upper_out', 'children'),
+        Input('rsi_upper', 'value')
+    )
+    def rsi_upper(value):
+        if value != None:
+            response=request(
+                '/strategy', 'put', json=dict(key='rsi_long_level', value=value))
+        value=request('/strategy', 'get',
+                        json=dict(key='rsi_long_level'))['data']
+        return f'Rsi Long Level: {value}'
 
-    # @dash_app.callback(
-    #     Output('rsi_lower_out', 'children'),
-    #     Input('rsi_lower', 'value')
-    # )
-    # def rsi_lower(value):
-    #     if value != None:
-    #         response = request(
-    #             '/strategy', 'put', json=dict(key='rsi_short_level', value=value))
-    #     value = request('/strategy', 'get',
-    #                     json=dict(key='rsi_short_level'))['data']
-    #     return f'Rsi Long Level: {value}'
-    # @dash_app.callback(
-    #     Output('rsi_period_out', 'children'),
-    #     Input('rsi_period', 'value')
-    # )
-    # def rsi_period(value):
-    #     if value != None:
-    #         response = request(
-    #             '/strategy', 'put', json=dict(key='rsi_period', value=value))
-    #     value = request('/strategy', 'get',
-    #                     json=dict(key='rsi_period'))['data']
-    #     return f'Rsi Period: {value}'
+    @dash_app.callback(
+        Output('rsi_lower_out', 'children'),
+        Input('rsi_lower', 'value')
+    )
+    def rsi_lower(value):
+        if value != None:
+            response=request(
+                '/strategy', 'put', json=dict(key='rsi_short_level', value=value))
+        value=request('/strategy', 'get',
+                        json=dict(key='rsi_short_level'))['data']
+        return f'Rsi Long Level: {value}'
 
-    # @dash_app.callback(
-    #     Output('rsi_upper_out', 'children'),
-    #     Input('rsi_upper', 'value')
-    # )
-    # def rsi_upper(value):
-    #     if value != None:
-    #         response = request(
-    #             '/strategy', 'put', json=dict(key='rsi_long_level', value=value))
-    #     value = request('/strategy', 'get',
-    #                     json=dict(key='rsi_long_level'))['data']
-    #     return f'Rsi Long Level: {value}'
-
-    # @dash_app.callback(
-    #     Output('rsi_lower_out', 'children'),
-    #     Input('rsi_lower', 'value')
-    # )
-    # def rsi_lower(value):
-    #     if value != None:
-    #         response = request(
-    #             '/strategy', 'put', json=dict(key='rsi_short_level', value=value))
-    #     value = request('/strategy', 'get',
-    #                     json=dict(key='rsi_short_level'))['data']
-    #     return f'Rsi Long Level: {value}'
     return dash_app
