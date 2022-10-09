@@ -44,19 +44,19 @@ inputs = html.Div([
     dcc.Input(id='stop', type='number', step="0.1"),  # stop loss
     html.Div(id='max_position_out'),
     dcc.Input(id='max_position', type='number', step="1"),  # max position
-    html.H2('Strategy Values'),
-    html.Div(id='long_vwap_out'),
-    dcc.Input(id='long_vwap', type='number', step="0.001"),  # long vwap,
-    html.Div(id='short_vwap_out'),
-    dcc.Input(id='short_vwap', type='number', step="0.001"),  # short vwap
-    html.Div(id='vwap_period_out'),
-    dcc.Input(id='vwap_period', type='number', step="1"),  # vwap period
-    html.Div(id='rsi_period_out'),
-    dcc.Input(id='rsi_period', type='number', step="1"),  # rsi period
-    html.Div(id='rsi_upper_out'),
-    dcc.Input(id='rsi_upper', type='number', step="0.1"),  # rsi upper
-    html.Div(id='rsi_lower_out'),
-    dcc.Input(id='rsi_lower', type='number', step="0.1"),  # rsi lower
+    # html.H2('Strategy Values'),
+    # html.Div(id='long_vwap_out'),
+    # dcc.Input(id='long_vwap', type='number', step="0.001"),  # long vwap,
+    # html.Div(id='short_vwap_out'),
+    # dcc.Input(id='short_vwap', type='number', step="0.001"),  # short vwap
+    # html.Div(id='vwap_period_out'),
+    # dcc.Input(id='vwap_period', type='number', step="1"),  # vwap period
+    # html.Div(id='rsi_period_out'),
+    # dcc.Input(id='rsi_period', type='number', step="1"),  # rsi period
+    # html.Div(id='rsi_upper_out'),
+    # dcc.Input(id='rsi_upper', type='number', step="0.1"),  # rsi upper
+    # html.Div(id='rsi_lower_out'),
+    # dcc.Input(id='rsi_lower', type='number', step="0.1"),  # rsi lower
 ], className='inputs')
 
 
