@@ -180,7 +180,15 @@ class Default(BaseApi):
 
 class Order(BaseApi):
     def post(self):
-        order = OrderManagement(params=self.data, resources=self.resources)
+        try:
+            order = OrderManagement(params=self.data, resources=self.resources)
+            self.json['outcome'] = True
+        except Exception as err:
+            self.json['err'] = err_return(str(type(err)))
+            self.json['outcome'] = False
+
+        return self.json
+        
 
 
 class WebsocketManage(BaseApi):
