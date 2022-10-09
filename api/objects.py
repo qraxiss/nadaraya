@@ -274,3 +274,21 @@ class OnOff(BaseApi):
         except Exception as err:
             self.json['err'] = err_return(str(type(err)))
             self.json['outcome'] = False
+
+
+
+
+# class Positions:
+#     pass
+
+
+# class Balance:
+#     pass
+
+
+# class UserSocket:
+#     pass
+
+
+# class Account(Balance, Positions, UserSocket):
+#     pass

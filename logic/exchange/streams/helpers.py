@@ -42,7 +42,7 @@ def order_update(order: dict):
                 pair = find_order_by_id(order['ot'], order['i'], df)
                 if pair != None:
                     request('/positions', 'delete', json=dict(pair=pair))
-                    telegram_text = f'closed :{pair}\nmarket :{order["ot"]}'
+                    telegram_text = f'closed :{pair}\nmarket :{order["ot"]}\nprofit: {order["rp"]}'
                     request('/telegram', 'post', json=dict(text=telegram_text))
 
 def account_update(account: dict):
