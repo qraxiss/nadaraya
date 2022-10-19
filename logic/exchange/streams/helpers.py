@@ -4,11 +4,10 @@ import pandas as pd
 import numpy as np
 
 
-def find_order_by_id(market, id, df):
-    order_type = market[:4].lower() + '_id'  # tp or sl
-    result_query = df[df[f'{order_type}'] == id]
-    if len(result_query) == 1:
-        return result_query.index[0]
+def find_order_by_id(symbol, df):
+    query = list(df.index.str.contains(symbol.lower()))
+    if 1 == query.count(True):
+        return df[query].index[0]
 
 
 def kline_update(stream_json: dict) -> dict:
@@ -39,7 +38,7 @@ def order_update(order: dict):
             if data['outcome']:
                 positions = data['data']
                 df = pd.DataFrame(positions).T
-                pair = find_order_by_id(order['ot'], order['i'], df)
+                pair = find_order_by_id(order['ot'], order['s'], df)
                 if pair != None:
                     request('/positions', 'delete', json=dict(pair=pair))
                     telegram_text = f'closed :{pair}\nmarket :{order["ot"]}\nprofit: {order["rp"]}'
