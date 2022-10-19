@@ -1,5 +1,8 @@
 from helpers import socket_parser
+from binance.client import Client
 from threading import Thread
+from api import request
+
 
 def get_step_info(client):
     exchange_info = client.futures_exchange_info()['symbols']
@@ -21,17 +24,16 @@ def get_balance(client):
     )
 
 
-def cancel_levels(client, pair, positions):
+def cancel_levels(client:Client, pair, positions):
     symbol, interval = socket_parser(pair)
-    try:
-        client.futures_cancel_order(symbol=symbol, orderId=positions[pair]['take_id'])
-    except:
-        pass    
 
-    try:
-        client.futures_cancel_order(symbol=symbol, orderId=positions[pair]['stop_id'])
-    except:
-        pass
+    for i in range(5):
+        try:
+            client.futures_cancel_all_open_orders(symbol=symbol)
+            break
+        except Exception as e:
+            text = f'Açık işlemler kapatılamadı, exception:{e}'
+            request('/telegram', 'post', json=dict(text=text))
 
 def change_margin_config(client, symbol, leverage, margin_type):
     Thread(target=client.futures_change_leverage,
