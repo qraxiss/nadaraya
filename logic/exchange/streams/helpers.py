@@ -38,7 +38,7 @@ def order_update(order: dict):
             if data['outcome']:
                 positions = data['data']
                 df = pd.DataFrame(positions).T
-                pair = find_order_by_id(order['ot'], order['s'], df)
+                pair = find_order_by_id(order['s'], df)
                 if pair != None:
                     request('/positions', 'delete', json=dict(pair=pair))
                     telegram_text = f'closed :{pair}\nmarket :{order["ot"]}\nprofit: {order["rp"]}'
